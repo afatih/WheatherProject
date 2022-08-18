@@ -10,7 +10,7 @@ User fills city name and click search. This button trigger a request to API and 
   - .Net 6.0
   - AWS Lambda Function
   - AWS Gateway
-  - AWS Elasticache
+  - AWS Elasticache (Redis)
   - AWS SecretManager
   - Refit for API calls
   - ASP .NET Core MVC for Ui.
