@@ -18,13 +18,10 @@ namespace WeatherAPI;
 public class Functions
 {
     public IOpenWeatherAPI _openWeatherAPIClient;
-
     private SecretsManagerCache _secretsManagerCache = new SecretsManagerCache(new SecretCacheConfiguration
     {
         CacheItemTTL = 300000 //5 mininutes
     });
-
-    private const string WeatherAPISecrets = "WeatherAPISecrets";
 
     /// <summary>
     /// Default constructor that Lambda will invoke.
@@ -51,7 +48,7 @@ public class Functions
             };
         }
 
-        var secretsResponse = await _secretsManagerCache.GetSecretString(WeatherAPISecrets);
+        var secretsResponse = await _secretsManagerCache.GetSecretString(GeneralConstants.WeatherAPISecretsKey);
         var secrets = JsonConvert.DeserializeObject<Secrets>(secretsResponse);
 
         var IsCacheEnabled = secrets.IsCacheEnabled;
